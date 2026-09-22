@@ -6,10 +6,10 @@ import java.util.UUID;
 
 public class Product {
     private final UUID id;
-    private final String name;
-    private final String description;
-    private final BigDecimal price;
-    private final Integer stockQuantity;
+    private String name;
+    private String description;
+    private BigDecimal price;
+    private Integer stockQuantity;
     private final Instant createdAt;
 
     public Product(UUID id,
@@ -34,15 +34,38 @@ public class Product {
         return name;
     }
 
+    public void changeName(String name) {
+        this.name = name;
+    }
+
     public String getDescription() {
         return description;
+    }
+
+    public void changeDescription(String description) {
+        this.description = description;
     }
 
     public BigDecimal getPrice() {
         return price;
     }
 
+    public void changePrice(BigDecimal price) {
+        this.price = price;
+    }
+
     public Integer getStockQuantity() {
         return stockQuantity;
+    }
+
+    public void changeStockQuantity(Integer stockQuantity) {
+        if (stockQuantity == null || stockQuantity < 0) {
+            throw new IllegalArgumentException("Stock quantity cannot be negative");
+        }
+        this.stockQuantity = stockQuantity;
+    }
+
+    public Instant getCreatedAt() {
+        return createdAt;
     }
 }

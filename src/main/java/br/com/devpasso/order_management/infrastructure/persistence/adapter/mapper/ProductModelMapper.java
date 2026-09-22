@@ -1,10 +1,10 @@
-package br.com.devpasso.order_management.domain.service.mapper;
+package br.com.devpasso.order_management.infrastructure.persistence.adapter.mapper;
 
 import br.com.devpasso.order_management.domain.model.Product;
 import br.com.devpasso.order_management.infrastructure.persistence.entity.ProductEntity;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
-@Service
+@Component
 public class ProductModelMapper {
     public Product toModel (ProductEntity productEntity) {
         return new Product(

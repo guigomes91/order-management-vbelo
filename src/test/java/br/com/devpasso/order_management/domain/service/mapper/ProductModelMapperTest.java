@@ -1,7 +1,9 @@
 package br.com.devpasso.order_management.domain.service.mapper;
 
 import br.com.devpasso.order_management.domain.model.Product;
+import br.com.devpasso.order_management.infrastructure.persistence.adapter.mapper.ProductModelMapper;
 import br.com.devpasso.order_management.infrastructure.persistence.entity.ProductEntity;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.test.util.ReflectionTestUtils;
 
@@ -11,11 +13,12 @@ import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ProductEntityModelMapperTest {
+class ProductModelMapperTest {
 
     private final ProductModelMapper mapper = new ProductModelMapper();
 
     @Test
+    @DisplayName("Should map domain product to persistence product")
     void toModel_ShouldMapPersistenceProductToDomainProduct() {
         UUID id = UUID.randomUUID();
         String name = "Test Product";

@@ -1,7 +1,10 @@
 package br.com.devpasso.order_management.application.mapper;
 
-import br.com.devpasso.order_management.application.dto.ProductResponse;
+import br.com.devpasso.order_management.api.dto.response.ProductResponse;
+import br.com.devpasso.order_management.api.mapper.response.ProductResponseMapper;
+import br.com.devpasso.order_management.application.dto.result.ProductResult;
 import br.com.devpasso.order_management.domain.model.Product;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
@@ -10,25 +13,24 @@ import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ProductEntityResponseMapperTest {
+class ProductResultMapperTest {
 
     private final ProductResponseMapper mapper = new ProductResponseMapper();
 
     @Test
+    @DisplayName("Should map product to product response")
     void toResponse_ShouldMapProductToProductResponse() {
         UUID id = UUID.randomUUID();
         String name = "Test Product";
         String description = "Test Description";
         BigDecimal price = new BigDecimal("99.99");
         Integer stockQuantity = 10;
-        Instant createdAt = Instant.now();
 
-        Product product = new Product(id,
+        ProductResult product = new ProductResult(id,
                 name,
                 description,
                 price,
-                stockQuantity,
-                createdAt);
+                stockQuantity);
 
         ProductResponse response = mapper.toResponse(product);
 

@@ -1,9 +1,15 @@
 package br.com.devpasso.order_management.domain.repository;
 
-import br.com.devpasso.order_management.infrastructure.persistence.entity.ProductEntity;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import br.com.devpasso.order_management.domain.common.PaginatedQueryResult;
+import br.com.devpasso.order_management.domain.common.PaginationQuery;
+import br.com.devpasso.order_management.domain.model.Product;
+
+import java.util.Optional;
 
 public interface ProductRepository {
-    Page<ProductEntity> findAllByNameContainingIgnoreCase(Pageable pageable, String name);
+    PaginatedQueryResult<Product> findAllByNameContainingIgnoreCase(PaginationQuery paginationQuery, String name);
+    Optional<Product> findById(String id);
+    Product save(Product product);
+    boolean existsByName(String name);
+    void deleteById(String id);
 }
